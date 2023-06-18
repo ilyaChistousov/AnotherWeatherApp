@@ -1,12 +1,10 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
-    id 'kotlin-kapt'
-    id 'com.google.dagger.hilt.android'
 }
 
 android {
-    namespace 'chistousov.ilya.navigation'
+    namespace 'chistousov.ilya.theme'
     compileSdk targetAndroidSdk
 
     defaultConfig {
@@ -24,25 +22,14 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = '17'
-    }
-    buildFeatures {
-        viewBinding true
+        jvmTarget = '1.8'
     }
 }
 
 dependencies {
-    implementation Libs.Android.CoreKtx
-    implementation Libs.Android.AppCompat
-    implementation Libs.Android.NavigationFragment
-    implementation Libs.Android.NavigationUi
-
-    implementation Libs.Google.Hilt
-    kapt Libs.Google.HiltCompiler
-
-    implementation project(Modules.Core.Theme)
+    implementation Libs.Google.Material
 }

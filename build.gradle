@@ -5,31 +5,36 @@ buildscript {
 
         hilt_version = "2.44"
         nav_version = "2.5.3"
-    }
 
-    Libs = [
-        Android: [
-                CoreKtx: "androidx.core:core-ktx:1.10.1",
-                FragmentKtx: "androidx.fragment:fragment-ktx:1.5.7",
-                AppCompat: "androidx.appcompat:appcompat:1.6.1",
-                NavigationFragment: "androidx.navigation:navigation-fragment-ktx:2.5.3",
-                NavigationUi: "androidx.navigation:navigation-ui-ktx:2.5.3",
-                LifecycleViewModelKtx: "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1",
-                ConstraintLayout: "androidx.constraintlayout:constraintlayout:2.1.4",
-        ],
-        JetBrains: [
-                Coroutines: "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4",
-        ],
-        Google: [
-                Material: "com.google.android.material:material:1.6.1",
-                Hilt: "com.google.dagger:hilt-android:$hilt_version",
-                HiltCompiler: "com.google.dagger:hilt-compiler:$hilt_version",
+        Libs = [
+                Android  : [
+                        CoreKtx              : "androidx.core:core-ktx:1.10.1",
+                        FragmentKtx          : "androidx.fragment:fragment-ktx:1.5.7",
+                        AppCompat            : "androidx.appcompat:appcompat:1.6.1",
+                        NavigationFragment   : "androidx.navigation:navigation-fragment-ktx:2.5.3",
+                        NavigationUi         : "androidx.navigation:navigation-ui-ktx:2.5.3",
+                        LifecycleViewModelKtx: "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1",
+                        ConstraintLayout     : "androidx.constraintlayout:constraintlayout:2.1.4",
+                ],
+                JetBrains: [
+                        Coroutines: "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4",
+                ],
+                Google   : [
+                        Material    : "com.google.android.material:material:1.6.1",
+                        Hilt        : "com.google.dagger:hilt-android:$hilt_version",
+                        HiltCompiler: "com.google.dagger:hilt-compiler:$hilt_version",
+                ]
         ]
-    ]
+
+        Modules = [
+                Navigation: ":navigation"
+        ]
+    }
 
 }
 plugins {
     id 'com.android.application' version '8.0.2' apply false
     id 'com.android.library' version '8.0.2' apply false
     id 'org.jetbrains.kotlin.android' version '1.8.20' apply false
+    id 'com.google.dagger.hilt.android' version "$hilt_version" apply false
 }

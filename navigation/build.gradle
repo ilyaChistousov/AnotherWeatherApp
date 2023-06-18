@@ -1,20 +1,19 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
 }
 
 android {
-    namespace 'chistousov.ilya.anotherweatherapp'
+    namespace 'chistousov.ilya.navigation'
     compileSdk targetAndroidSdk
 
     defaultConfig {
-        applicationId "chistousov.ilya.anotherweatherapp"
         minSdk minAndroidSdk
         targetSdk targetAndroidSdk
-        versionCode 1
-        versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -30,9 +29,18 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
 
-    implementation project(Modules.Navigation)
+    implementation Libs.Android.CoreKtx
+    implementation Libs.Android.AppCompat
+    implementation Libs.Android.NavigationFragment
+    implementation Libs.Android.NavigationUi
+
+    implementation Libs.Google.Hilt
+    kapt Libs.Google.HiltCompiler
 }

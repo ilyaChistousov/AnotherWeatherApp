@@ -1,22 +1,20 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
-    id 'com.google.dagger.hilt.android'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
-    namespace 'chistousov.ilya.anotherweatherapp'
+    namespace 'chistousov.ilya.current_weather'
     compileSdk targetAndroidSdk
 
     defaultConfig {
-        applicationId "chistousov.ilya.anotherweatherapp"
         minSdk minAndroidSdk
         targetSdk targetAndroidSdk
-        versionCode 1
-        versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -32,17 +30,16 @@ android {
     kotlinOptions {
         jvmTarget = '17'
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
-    implementation Libs.Android.NavigationFragment
-    implementation Libs.Android.NavigationUi
+
+    implementation Libs.Android.FragmentKtx
 
     implementation Libs.Google.Hilt
     kapt Libs.Google.HiltCompiler
 
-    implementation project(Modules.Data)
-    implementation project(Modules.Navigation)
-    implementation project(Modules.Features.Splash)
-    implementation project(Modules.Features.CurrentWeather)
 }

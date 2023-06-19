@@ -5,6 +5,8 @@ buildscript {
 
         hilt_version = "2.44"
         nav_version = "2.5.3"
+        retrofit_version = "2.9.0"
+        okhttp_version = "4.10.0"
 
         Libs = [
                 Android  : [
@@ -23,6 +25,12 @@ buildscript {
                         Material    : "com.google.android.material:material:1.6.1",
                         Hilt        : "com.google.dagger:hilt-android:$hilt_version",
                         HiltCompiler: "com.google.dagger:hilt-compiler:$hilt_version",
+                ],
+                Square : [
+                        Retrofit: "com.squareup.retrofit2:retrofit:$retrofit_version",
+                        GsonConverter: "com.squareup.retrofit2:converter-gson:$retrofit_version",
+                        OkHttp: "com.squareup.okhttp3:okhttp:$okhttp_version",
+                        OkHttpLogging: "com.squareup.okhttp3:logging-interceptor:$okhttp_version",
                 ]
         ]
 
@@ -33,7 +41,9 @@ buildscript {
                 ],
                 Features: [
                         Splash: ":features:splash",
-                ]
+                        CurrentWeather: ":features:current_weather"
+                ],
+                Data: ":data"
         ]
     }
 

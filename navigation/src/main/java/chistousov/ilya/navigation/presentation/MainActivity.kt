@@ -18,6 +18,5 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         componentRouter.setActivity(this)
-        componentRouter.setNavGraph()
     }
 }

@@ -1,19 +1,34 @@
 package chistousov.ilya.splash.presentation
 
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import chistousov.ilya.splash.domain.LoadCurrentLocationUseCase
+import chistousov.ilya.presentation.BaseViewModel
+import chistousov.ilya.splash.domain.LoadDefaultLocationUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @HiltViewModel
-class SplashScreenViewModel(
-    private val loadCurrentLocationUseCase: LoadCurrentLocationUseCase
-) : ViewModel() {
+class SplashScreenViewModel @Inject constructor(
+    private val loadDefaultLocationUseCase: LoadDefaultLocationUseCase,
+    private val splashScreenRouter: SplashScreenRouter
+) : BaseViewModel() {
 
-    fun loadCurrentLocation() = viewModelScope.launch {
-        loadCurrentLocationUseCase()
-        delay(2000)
+    val loadingState = flowValue(false)
+
+    init {
+        loadDefaultLocationUseCase
+    }
+
+    fun loadDefaultLocation() = viewModelScope.launch {
+        if (loadDefaultLocationUseCase()) {
+            loadingState.value = true
+        }
+        launchCurrentWeather()
+    }
+
+    private fun launchCurrentWeather() {
+        if (loadingState.value) {
+            splashScreenRouter.launchCurrentWeather()
+        }
     }
 }

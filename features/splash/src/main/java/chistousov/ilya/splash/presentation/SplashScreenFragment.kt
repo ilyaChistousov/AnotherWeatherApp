@@ -1,6 +1,8 @@
 package chistousov.ilya.splash.presentation
 
 import android.annotation.SuppressLint
+import android.location.Location
+import android.location.LocationListener
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -17,11 +19,12 @@ class SplashScreenFragment : Fragment(R.layout.fragment_splash_screen) {
 
     private val viewModel by viewModels<SplashScreenViewModel>()
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentSplashScreenBinding.bind(view)
 
-        viewModel.loadCurrentLocation()
+        viewModel.loadDefaultLocation()
     }
 
     override fun onDestroyView() {

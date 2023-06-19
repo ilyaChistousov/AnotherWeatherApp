@@ -8,4 +8,4 @@
     android:layout_height="match_parent"
     android:name="androidx.navigation.fragment.NavHostFragment"
     app:defaultNavHost="true"
-    tools:context="chistousov.ilya.navigation.presentation.MainActivity" />
+    tools:context=".presentation.MainActivity" />

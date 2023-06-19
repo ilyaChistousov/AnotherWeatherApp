@@ -41,8 +41,10 @@ dependencies {
     implementation Libs.Android.NavigationFragment
     implementation Libs.Android.NavigationUi
 
+    implementation Libs.Google.Location
     implementation Libs.Google.Hilt
     kapt Libs.Google.HiltCompiler
 
     implementation project(Modules.Core.Theme)
+    implementation project(Modules.Core.CommonImpl)
 }

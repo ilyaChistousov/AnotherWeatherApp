@@ -10,4 +10,9 @@
         android:name="chistousov.ilya.splash.presentation.SplashScreenFragment"
         android:label="SplashScreenFragment"
         tools:layout="@layout/fragment_splash_screen"/>
+    <fragment
+        android:id="@+id/currentWeatherFragment"
+        android:name="chistousov.ilya.current_weather.presentation.CurrentWeatherFragment"
+        android:label="CurrentWeatherFragment"
+        tools:layout="@layout/fragment_current_weather"/>
 </navigation>

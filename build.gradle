@@ -5,6 +5,9 @@ buildscript {
 
         hilt_version = "2.44"
         nav_version = "2.5.3"
+        retrofit_version = "2.9.0"
+        okhttp_version = "4.10.0"
+        room_version = "2.5.1"
 
         Libs = [
                 Android  : [
@@ -15,6 +18,8 @@ buildscript {
                         NavigationUi         : "androidx.navigation:navigation-ui-ktx:2.5.3",
                         LifecycleViewModelKtx: "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1",
                         ConstraintLayout     : "androidx.constraintlayout:constraintlayout:2.1.4",
+                        RoomKtx: "androidx.room:room-ktx:$room_version",
+                        RoomCompiler: "androidx.room:room-compiler:$room_version",
                 ],
                 JetBrains: [
                         Coroutines: "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4",
@@ -23,17 +28,30 @@ buildscript {
                         Material    : "com.google.android.material:material:1.6.1",
                         Hilt        : "com.google.dagger:hilt-android:$hilt_version",
                         HiltCompiler: "com.google.dagger:hilt-compiler:$hilt_version",
+                        Location    : "com.google.android.gms:play-services-location:21.0.1"
+                ],
+                Square   : [
+                        Retrofit     : "com.squareup.retrofit2:retrofit:$retrofit_version",
+                        GsonConverter: "com.squareup.retrofit2:converter-gson:$retrofit_version",
+                        OkHttp       : "com.squareup.okhttp3:okhttp:$okhttp_version",
+                        OkHttpLogging: "com.squareup.okhttp3:logging-interceptor:$okhttp_version",
                 ]
         ]
 
         Modules = [
                 Navigation: ":navigation",
-                Core: [
-                        "Theme": ":core:theme"
+                Core      : [
+                        Common      : ":core:common",
+                        CommonImpl  : ":core:common-impl",
+                        Theme       : ":core:theme",
+                        Presentation: ":core:presentation"
                 ],
-                Features: [
-                        Splash: ":features:splash",
-                ]
+                Features  : [
+                        Splash        : ":features:splash",
+                        CurrentWeather: ":features:current_weather"
+                ],
+                Data      : ":data",
+                Wiring    : ":wiring"
         ]
     }
 
@@ -43,4 +61,5 @@ plugins {
     id 'com.android.library' version '8.0.2' apply false
     id 'org.jetbrains.kotlin.android' version '1.8.20' apply false
     id 'com.google.dagger.hilt.android' version "$hilt_version" apply false
+    id 'org.jetbrains.kotlin.jvm' version '1.8.20' apply false
 }

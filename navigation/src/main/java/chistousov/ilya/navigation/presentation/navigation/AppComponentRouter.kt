@@ -3,20 +3,24 @@ package chistousov.ilya.navigation.presentation.navigation
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import chistousov.ilya.common_impl.ActivityRequired
 import chistousov.ilya.navigation.R
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class AppComponentRouter @Inject constructor(
     private val destinationProvider: DestinationProvider
-) {
+) : ActivityRequired {
 
     private var activity: FragmentActivity? = null
 
-    fun setActivity(activity: FragmentActivity) {
+    override fun onCreate(activity: FragmentActivity) {
         this.activity = activity
+        setNavGraph()
     }
 
-    fun setNavGraph() {
+    private fun setNavGraph() {
         val graph = getNavController().navInflater.inflate(
             destinationProvider.provideNavigationGraphId()
         )
@@ -25,8 +29,8 @@ class AppComponentRouter @Inject constructor(
     }
 
     private fun getNavController(): NavController {
-        val fragmentManager = activity?.supportFragmentManager
-        val navHost = fragmentManager?.findFragmentById(R.id.fragmentContainer) as NavHostFragment
+        val fragmentManager = requireActivity().supportFragmentManager
+        val navHost = fragmentManager.findFragmentById(R.id.fragmentContainer) as NavHostFragment
         return navHost.navController
     }
 

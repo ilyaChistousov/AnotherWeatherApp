@@ -1,0 +1,7 @@
+<resources>
+    <string name="temp">%1$s\u00B0</string>
+    <string name="max_temp">Max. %1$s</string>
+    <string name="min_temp">Min. %1$s</string>
+    <string name="show_details">Show details</string>
+    <string name="forecast">Forecast</string>
+</resources>

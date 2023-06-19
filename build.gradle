@@ -37,7 +37,8 @@ buildscript {
         Modules = [
                 Navigation: ":navigation",
                 Core: [
-                        "Theme": ":core:theme"
+                        Theme: ":core:theme",
+                        Presentation: ":core:presentation"
                 ],
                 Features: [
                         Splash: ":features:splash",

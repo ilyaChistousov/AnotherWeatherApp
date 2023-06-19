@@ -1,5 +1,6 @@
 package chistousov.ilya.anotherweatherapp.mapper
 
+import chistousov.ilya.common.BaseMapper
 import chistousov.ilya.current_weather.domain.entity.CurrentWeather
 import chistousov.ilya.data.api.dto.CurrentWeatherDto
 import javax.inject.Inject

@@ -1,9 +1,9 @@
 package chistousov.ilya.navigation.presentation.navigation
 
-import android.util.Log
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import chistousov.ilya.common_impl.ActivityRequired
 import chistousov.ilya.navigation.R
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -11,11 +11,11 @@ import javax.inject.Singleton
 @Singleton
 class AppComponentRouter @Inject constructor(
     private val destinationProvider: DestinationProvider
-) {
+) : ActivityRequired {
 
     private var activity: FragmentActivity? = null
 
-    fun setActivity(activity: FragmentActivity) {
+    override fun onCreate(activity: FragmentActivity) {
         this.activity = activity
         setNavGraph()
     }

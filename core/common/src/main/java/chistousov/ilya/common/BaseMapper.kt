@@ -1,4 +1,4 @@
-package chistousov.ilya.anotherweatherapp.mapper
+package chistousov.ilya.common
 
 interface BaseMapper<T, R> {
 

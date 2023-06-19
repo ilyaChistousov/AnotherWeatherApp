@@ -45,4 +45,8 @@ dependencies {
     implementation project(Modules.Navigation)
     implementation project(Modules.Features.Splash)
     implementation project(Modules.Features.CurrentWeather)
+    implementation project(Modules.Core.Common)
+    implementation project(Modules.Core.CommonImpl)
+    implementation project(Modules.Wiring)
+
 }

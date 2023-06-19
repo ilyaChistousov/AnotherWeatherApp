@@ -42,4 +42,7 @@ dependencies {
     implementation Libs.Google.Hilt
     kapt Libs.Google.HiltCompiler
 
+    implementation project(Modules.Core.Presentation)
+    implementation project(Modules.Core.Theme)
+
 }

@@ -37,6 +37,8 @@ buildscript {
         Modules = [
                 Navigation: ":navigation",
                 Core: [
+                        Common: ":core:common",
+                        CommonImpl: ":core:common-impl",
                         Theme: ":core:theme",
                         Presentation: ":core:presentation"
                 ],
@@ -44,7 +46,8 @@ buildscript {
                         Splash: ":features:splash",
                         CurrentWeather: ":features:current_weather"
                 ],
-                Data: ":data"
+                Data: ":data",
+                Wiring: ":wiring"
         ]
     }
 
@@ -54,4 +57,5 @@ plugins {
     id 'com.android.library' version '8.0.2' apply false
     id 'org.jetbrains.kotlin.android' version '1.8.20' apply false
     id 'com.google.dagger.hilt.android' version "$hilt_version" apply false
+    id 'org.jetbrains.kotlin.jvm' version '1.8.20' apply false
 }

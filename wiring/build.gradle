@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace 'chistousov.ilya.navigation'
+    namespace 'chistousov.ilya.wiring'
     compileSdk targetAndroidSdk
 
     defaultConfig {
@@ -30,20 +30,13 @@ android {
     kotlinOptions {
         jvmTarget = '17'
     }
-    buildFeatures {
-        viewBinding true
-    }
 }
 
 dependencies {
-    implementation Libs.Android.CoreKtx
-    implementation Libs.Android.AppCompat
-    implementation Libs.Android.NavigationFragment
-    implementation Libs.Android.NavigationUi
 
     implementation Libs.Google.Hilt
     kapt Libs.Google.HiltCompiler
 
-    implementation project(Modules.Core.Theme)
+    implementation project(Modules.Core.Common)
     implementation project(Modules.Core.CommonImpl)
 }

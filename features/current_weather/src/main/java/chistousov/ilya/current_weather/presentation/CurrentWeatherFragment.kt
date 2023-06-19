@@ -19,7 +19,7 @@ class CurrentWeatherFragment : Fragment(R.layout.fragment_current_weather) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.getCurrentWeather()
+        viewModel.load()
     }
 
     override fun onDestroyView() {

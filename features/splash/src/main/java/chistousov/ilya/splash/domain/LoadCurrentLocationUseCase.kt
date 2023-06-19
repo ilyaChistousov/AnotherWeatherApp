@@ -3,7 +3,8 @@ package chistousov.ilya.splash.domain
 import chistousov.ilya.splash.domain.repository.SplashRepository
 import javax.inject.Inject
 
-class LoadCurrentLocationUseCase constructor(private val repository: SplashRepository) {
+class LoadCurrentLocationUseCase @Inject constructor(private val repository: SplashRepository) {
 
-    suspend operator fun invoke() = repository.loadCurrentLocation()
+    suspend operator fun invoke(latitude: Double, longitude: Double) =
+        repository.loadCurrentLocation(latitude, longitude)
 }

@@ -34,6 +34,9 @@ android {
 
 dependencies {
 
+    implementation Libs.Android.RoomKtx
+    kapt Libs.Android.RoomCompiler
+
     implementation Libs.Google.Hilt
     kapt Libs.Google.HiltCompiler
 
@@ -41,4 +44,6 @@ dependencies {
     implementation Libs.Square.GsonConverter
     implementation Libs.Square.OkHttp
     implementation Libs.Square.OkHttpLogging
+
+    implementation project(Modules.Core.Common)
 }

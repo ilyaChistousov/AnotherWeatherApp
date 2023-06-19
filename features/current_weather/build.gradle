@@ -44,5 +44,6 @@ dependencies {
 
     implementation project(Modules.Core.Presentation)
     implementation project(Modules.Core.Theme)
+    implementation project(Modules.Core.Common)
 
 }

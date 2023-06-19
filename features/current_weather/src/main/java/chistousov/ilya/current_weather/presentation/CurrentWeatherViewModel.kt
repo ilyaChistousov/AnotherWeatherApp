@@ -1,24 +1,35 @@
 package chistousov.ilya.current_weather.presentation
 
-import android.util.Log
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import chistousov.ilya.common.Result
 import chistousov.ilya.current_weather.domain.GetCurrentWeatherUseCase
+import chistousov.ilya.current_weather.domain.GetDefaultWeatherUseCase
+import chistousov.ilya.current_weather.domain.entity.CurrentWeather
 import chistousov.ilya.presentation.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class CurrentWeatherViewModel @Inject constructor(
-    private val getCurrentWeatherUseCase: GetCurrentWeatherUseCase
+    private val getCurrentWeatherUseCase: GetCurrentWeatherUseCase,
+    private val getDefaultWeatherUseCase: GetDefaultWeatherUseCase
 ) : BaseViewModel() {
 
-    fun getCurrentWeather() = viewModelScope.launch {
-        val weather = getCurrentWeatherUseCase("Санкт-Петербург", "ru", "metric")
-        weather.collectLatest {
-            Log.d("CurrentWeatherViewModel", it.toString())
+    private val state = MutableStateFlow(CurrentWeather("", 0, 0))
+    val currentWeatherState = flowValue(CurrentWeather("", 0, 0))
+    init {
+        load()
+    }
+
+    fun load() = viewModelScope.launch {
+        getDefaultWeatherUseCase().collect {
         }
+    }
+
+    fun getCurrentWeather() = viewModelScope.launch {
     }
 }

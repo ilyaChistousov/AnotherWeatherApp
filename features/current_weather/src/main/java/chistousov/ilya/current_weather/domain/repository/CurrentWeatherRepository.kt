@@ -5,5 +5,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface CurrentWeatherRepository {
 
-    suspend fun getCurrentWeather(city: String, lang: String, units: String): Flow<CurrentWeather>
+//    suspend fun getCurrentWeather(city: String, lang: String, units: String): CurrentWeather
+
+    suspend fun getDefaultWeather(): Flow<CurrentWeather>
 }

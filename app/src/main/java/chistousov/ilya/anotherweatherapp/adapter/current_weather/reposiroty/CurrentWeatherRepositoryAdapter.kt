@@ -13,13 +13,17 @@ class CurrentWeatherRepositoryAdapter @Inject constructor(
     private val mapper: CurrentWeatherMapper
 ) : CurrentWeatherRepository {
 
-    override suspend fun getCurrentWeather(
-        city: String,
-        lang: String,
-        units: String
-    ): Flow<CurrentWeather> {
-        return dataCurrentWeatherRepository.getCurrentWeather(city, lang, units).map {
-            mapper.map(it)
-        }
+//    override suspend fun getCurrentWeather(
+//        city: String,
+//        lang: String,
+//        units: String
+//    ): Flow<CurrentWeather> {
+//        return dataCurrentWeatherRepository.getCurrentWeather().map {
+//            mapper.map(it)
+//        }
+//    }
+
+    override suspend fun getDefaultWeather(): Flow<CurrentWeather> {
+        return dataCurrentWeatherRepository.getCurrentWeather().map { mapper.map(it) }
     }
 }

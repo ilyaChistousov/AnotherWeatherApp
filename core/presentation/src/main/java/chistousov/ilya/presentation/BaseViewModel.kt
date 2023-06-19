@@ -3,15 +3,12 @@ package chistousov.ilya.presentation
 import androidx.lifecycle.ViewModel
 import chistousov.ilya.common.CommonUi
 import chistousov.ilya.common.Core
-import chistousov.ilya.common.Permissions
 import chistousov.ilya.common.Resource
 import kotlinx.coroutines.flow.MutableStateFlow
 
 open class BaseViewModel : ViewModel() {
 
     protected val resource: Resource = Core.resource
-
-    protected val permission: Permissions = Core.permissions
 
     protected  val commonUi: CommonUi = Core.commonUi
     protected fun <T> flowValue(value: T): FlowValue<T> {

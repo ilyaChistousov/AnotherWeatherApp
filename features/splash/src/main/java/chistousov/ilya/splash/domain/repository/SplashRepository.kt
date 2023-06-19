@@ -2,5 +2,6 @@ package chistousov.ilya.splash.domain.repository
 
 interface SplashRepository {
 
-    suspend fun loadCurrentLocation()
+    suspend fun loadCurrentLocation(): Boolean
+    suspend fun loadDefaultLocation(): Boolean
 }

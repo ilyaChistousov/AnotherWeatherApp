@@ -5,6 +5,4 @@ interface CoreProvider {
     val commonUi: CommonUi
 
     val resource: Resource
-
-    val permissions: Permissions
 }

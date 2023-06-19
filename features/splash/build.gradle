@@ -39,6 +39,7 @@ dependencies {
     implementation Libs.Android.FragmentKtx
     implementation Libs.Android.ConstraintLayout
 
+    implementation Libs.Google.Location
     implementation Libs.Google.Hilt
     kapt Libs.Google.HiltCompiler
 

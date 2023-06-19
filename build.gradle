@@ -25,29 +25,30 @@ buildscript {
                         Material    : "com.google.android.material:material:1.6.1",
                         Hilt        : "com.google.dagger:hilt-android:$hilt_version",
                         HiltCompiler: "com.google.dagger:hilt-compiler:$hilt_version",
+                        Location    : "com.google.android.gms:play-services-location:21.0.1"
                 ],
-                Square : [
-                        Retrofit: "com.squareup.retrofit2:retrofit:$retrofit_version",
+                Square   : [
+                        Retrofit     : "com.squareup.retrofit2:retrofit:$retrofit_version",
                         GsonConverter: "com.squareup.retrofit2:converter-gson:$retrofit_version",
-                        OkHttp: "com.squareup.okhttp3:okhttp:$okhttp_version",
+                        OkHttp       : "com.squareup.okhttp3:okhttp:$okhttp_version",
                         OkHttpLogging: "com.squareup.okhttp3:logging-interceptor:$okhttp_version",
                 ]
         ]
 
         Modules = [
                 Navigation: ":navigation",
-                Core: [
-                        Common: ":core:common",
-                        CommonImpl: ":core:common-impl",
-                        Theme: ":core:theme",
+                Core      : [
+                        Common      : ":core:common",
+                        CommonImpl  : ":core:common-impl",
+                        Theme       : ":core:theme",
                         Presentation: ":core:presentation"
                 ],
-                Features: [
-                        Splash: ":features:splash",
+                Features  : [
+                        Splash        : ":features:splash",
                         CurrentWeather: ":features:current_weather"
                 ],
-                Data: ":data",
-                Wiring: ":wiring"
+                Data      : ":data",
+                Wiring    : ":wiring"
         ]
     }
 

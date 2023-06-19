@@ -15,9 +15,6 @@ object Core {
     val resource: Resource
         get() = coreProvider.resource
 
-    val permissions: Permissions
-        get() = coreProvider.permissions
-
     fun init(coreProvider: CoreProvider) {
         this.coreProvider = coreProvider
     }

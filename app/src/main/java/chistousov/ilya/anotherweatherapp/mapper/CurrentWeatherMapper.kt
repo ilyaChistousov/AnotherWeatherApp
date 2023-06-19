@@ -13,6 +13,9 @@ class CurrentWeatherMapper @Inject constructor(): BaseMapper<LatestDataEntity, C
             city = input.city,
             temp = input.temp,
             feelsLike = input.feelsLike,
+            tempMin = input.tempMin,
+            tempMax = input.tempMax,
+            description = input.weatherDescription
         )
     }
 }

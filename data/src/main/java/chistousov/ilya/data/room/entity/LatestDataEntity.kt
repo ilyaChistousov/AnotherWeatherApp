@@ -12,5 +12,6 @@ data class LatestDataEntity(
     val tempMax: Int,
     val tempMin: Int,
     val pressure: Int,
-    val wind: Double
+    val wind: Int,
+    val weatherDescription: String
 )

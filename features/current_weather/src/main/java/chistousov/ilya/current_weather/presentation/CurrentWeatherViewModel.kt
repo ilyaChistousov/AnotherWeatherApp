@@ -15,21 +15,18 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CurrentWeatherViewModel @Inject constructor(
-    private val getCurrentWeatherUseCase: GetCurrentWeatherUseCase,
     private val getDefaultWeatherUseCase: GetDefaultWeatherUseCase
 ) : BaseViewModel() {
 
-    private val state = MutableStateFlow(CurrentWeather("", 0, 0))
-    val currentWeatherState = flowValue(CurrentWeather("", 0, 0))
+    val currentWeatherState = flowValue<Result<CurrentWeather>>(Result.Loading)
+
     init {
         load()
     }
-
     fun load() = viewModelScope.launch {
         getDefaultWeatherUseCase().collect {
+            currentWeatherState.value = Result.Success(it)
         }
     }
 
-    fun getCurrentWeather() = viewModelScope.launch {
-    }
 }

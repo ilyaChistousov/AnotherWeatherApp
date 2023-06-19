@@ -8,10 +8,6 @@ class SplashScreenRepositoryAdapter @Inject constructor(
     private val dataSplashScreenRepository: DataSplashScreenRepository
 ) : SplashRepository {
 
-    override suspend fun loadCurrentLocation(latitude: Double, longitude: Double): Boolean {
-        return dataSplashScreenRepository.loadCurrentWeather(latitude, longitude)
-    }
-
     override suspend fun loadDefaultLocation(): Boolean {
         return dataSplashScreenRepository.loadDefaultLocation()
     }

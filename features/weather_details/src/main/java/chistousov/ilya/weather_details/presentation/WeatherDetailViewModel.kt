@@ -4,8 +4,8 @@ import androidx.lifecycle.viewModelScope
 import chistousov.ilya.common.Result
 import chistousov.ilya.presentation.BaseScreenArgs
 import chistousov.ilya.presentation.BaseViewModel
-import chistousov.ilya.weather_details.presentation.domain.GetWeatherDetailsUseCase
-import chistousov.ilya.weather_details.presentation.domain.entity.WeatherDetails
+import chistousov.ilya.weather_details.domain.GetWeatherDetailsUseCase
+import chistousov.ilya.weather_details.domain.entity.WeatherDetails
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel

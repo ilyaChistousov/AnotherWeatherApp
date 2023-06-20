@@ -1,8 +1,8 @@
-package chistousov.ilya.weather_details.presentation.domain
+package chistousov.ilya.weather_details.domain
 
 import chistousov.ilya.common.Result
-import chistousov.ilya.weather_details.presentation.domain.entity.WeatherDetails
-import chistousov.ilya.weather_details.presentation.domain.repository.WeatherDetailsRepository
+import chistousov.ilya.weather_details.domain.entity.WeatherDetails
+import chistousov.ilya.weather_details.domain.repository.WeatherDetailsRepository
 import javax.inject.Inject
 
 class GetWeatherDetailsUseCase @Inject constructor(private val repository: WeatherDetailsRepository) {

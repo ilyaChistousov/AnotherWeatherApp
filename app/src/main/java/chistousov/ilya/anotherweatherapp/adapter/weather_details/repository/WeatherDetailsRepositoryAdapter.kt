@@ -2,8 +2,8 @@ package chistousov.ilya.anotherweatherapp.adapter.weather_details.repository
 
 import chistousov.ilya.anotherweatherapp.adapter.weather_details.mapper.WeatherDetailsMapper
 import chistousov.ilya.data.weather_details.DataWeatherDetailsRepository
-import chistousov.ilya.weather_details.presentation.domain.entity.WeatherDetails
-import chistousov.ilya.weather_details.presentation.domain.repository.WeatherDetailsRepository
+import chistousov.ilya.weather_details.domain.entity.WeatherDetails
+import chistousov.ilya.weather_details.domain.repository.WeatherDetailsRepository
 import javax.inject.Inject
 
 class WeatherDetailsRepositoryAdapter @Inject constructor(

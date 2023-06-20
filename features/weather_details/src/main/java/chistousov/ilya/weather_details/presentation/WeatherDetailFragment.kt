@@ -8,7 +8,7 @@ import chistousov.ilya.common.Result
 import chistousov.ilya.presentation.BaseScreenArgs
 import chistousov.ilya.weather_details.R
 import chistousov.ilya.weather_details.databinding.FragmentWeatherDetailBinding
-import chistousov.ilya.weather_details.presentation.domain.entity.WeatherDetails
+import chistousov.ilya.weather_details.domain.entity.WeatherDetails
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

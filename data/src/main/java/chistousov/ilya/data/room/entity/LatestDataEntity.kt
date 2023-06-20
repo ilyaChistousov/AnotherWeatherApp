@@ -9,7 +9,7 @@ data class LatestDataEntity(
     val city: String,
     val temp: Int,
     val feelsLike: Int,
-    val time: Int,
+    val time: String,
     val tempMax: Int,
     val tempMin: Int,
     val pressure: Int,

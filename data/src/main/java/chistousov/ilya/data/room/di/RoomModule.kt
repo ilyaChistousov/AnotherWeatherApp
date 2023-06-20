@@ -2,8 +2,8 @@ package chistousov.ilya.data.room.di
 
 import android.content.Context
 import androidx.room.Room
-import androidx.room.RoomDatabase
-import chistousov.ilya.data.room.LatestDataDb
+import chistousov.ilya.data.room.dao.ForecastDao
+import chistousov.ilya.data.room.db.LatestDataDb
 import chistousov.ilya.data.room.dao.LatestDataDao
 import dagger.Module
 import dagger.Provides
@@ -17,7 +17,6 @@ import javax.inject.Singleton
 class RoomModule {
 
     @Provides
-    @Singleton
     fun provideDatabase(
         @ApplicationContext appContext: Context
     ): LatestDataDb {
@@ -29,8 +28,12 @@ class RoomModule {
     }
 
     @Provides
-    @Singleton
     fun provideLatestDataDao(database: LatestDataDb) : LatestDataDao {
         return database.latestDataDao()
+    }
+
+    @Provides
+    fun provideForecastDao(database: LatestDataDb) : ForecastDao {
+        return database.forecastDao()
     }
 }

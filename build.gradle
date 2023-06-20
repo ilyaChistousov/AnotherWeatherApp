@@ -49,7 +49,8 @@ buildscript {
                 Features  : [
                         Splash        : ":features:splash",
                         CurrentWeather: ":features:current_weather",
-                        WeatherDetails: ":features:weather_details"
+                        WeatherDetails: ":features:weather_details",
+                        Forecast      : ":features:forecast",
                 ],
                 Data      : ":data",
                 Wiring    : ":wiring"

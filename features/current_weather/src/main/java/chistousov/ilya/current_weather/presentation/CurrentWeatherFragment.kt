@@ -1,7 +1,6 @@
 package chistousov.ilya.current_weather.presentation
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -24,6 +23,7 @@ class CurrentWeatherFragment : Fragment(R.layout.fragment_current_weather) {
         observeState()
 
         launchDetails()
+        launchForecast()
         viewModel.load()
     }
 
@@ -62,6 +62,12 @@ class CurrentWeatherFragment : Fragment(R.layout.fragment_current_weather) {
     private fun launchDetails() {
         binding.weatherDetails.setOnClickListener {
             viewModel.launchWeatherDetails()
+        }
+    }
+
+    private fun launchForecast() {
+        binding.weatherForecast.setOnClickListener {
+            viewModel.launchForecast()
         }
     }
 

@@ -11,4 +11,8 @@ class CurrentWeatherRouterImpl @Inject constructor(
     override fun launchWeatherDetails() {
         appComponentRouter.launch(R.id.weatherDetailsFragment)
     }
+
+    override fun launchForecast() {
+        appComponentRouter.launch(R.id.forecastFragment)
+    }
 }

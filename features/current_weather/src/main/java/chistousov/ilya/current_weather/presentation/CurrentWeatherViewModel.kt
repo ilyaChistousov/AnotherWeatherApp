@@ -32,4 +32,8 @@ class CurrentWeatherViewModel @Inject constructor(
     fun launchWeatherDetails() {
         currentWeatherRouter.launchWeatherDetails()
     }
+
+    fun launchForecast() {
+        currentWeatherRouter.launchForecast()
+    }
 }

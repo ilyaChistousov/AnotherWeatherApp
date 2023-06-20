@@ -7,5 +7,5 @@ interface CurrentWeatherRepository {
 
 //    suspend fun getCurrentWeather(city: String, lang: String, units: String): CurrentWeather
 
-    suspend fun getDefaultWeather(): Flow<CurrentWeather>
+    suspend fun getDefaultWeather(): CurrentWeather
 }

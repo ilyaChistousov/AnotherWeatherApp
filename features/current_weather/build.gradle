@@ -39,7 +39,6 @@ dependencies {
 
     implementation Libs.Android.AppCompat
     implementation Libs.Android.FragmentKtx
-    implementation Libs.Android.ConstraintLayout
 
     implementation Libs.Google.Material
     implementation Libs.Google.Hilt

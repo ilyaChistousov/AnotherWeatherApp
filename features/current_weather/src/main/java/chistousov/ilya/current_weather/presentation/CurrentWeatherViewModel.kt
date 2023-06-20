@@ -15,7 +15,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CurrentWeatherViewModel @Inject constructor(
-    private val getDefaultWeatherUseCase: GetDefaultWeatherUseCase
+    private val getDefaultWeatherUseCase: GetDefaultWeatherUseCase,
+    private val currentWeatherRouter: CurrentWeatherRouter
 ) : BaseViewModel() {
 
     val currentWeatherState = flowValue<Result<CurrentWeather>>(Result.Loading)
@@ -23,10 +24,12 @@ class CurrentWeatherViewModel @Inject constructor(
     init {
         load()
     }
+
     fun load() = viewModelScope.launch {
-        getDefaultWeatherUseCase().collect {
-            currentWeatherState.value = Result.Success(it)
-        }
+        currentWeatherState.value = getDefaultWeatherUseCase()
     }
 
+    fun launchWeatherDetails() {
+        currentWeatherRouter.launchWeatherDetails()
+    }
 }

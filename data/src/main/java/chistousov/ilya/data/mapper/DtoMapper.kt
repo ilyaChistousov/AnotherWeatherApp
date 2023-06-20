@@ -16,8 +16,11 @@ class DtoMapper @Inject constructor(): BaseMapper<CurrentWeatherDto, LatestDataE
             tempMax = input.main.temp_max.roundToInt(),
             tempMin = input.main.temp_min.roundToInt(),
             pressure = input.main.pressure,
-            wind = input.wind.speed.roundToInt(),
-            weatherDescription = input.weather[0].description
+            wind = input.wind.speed,
+            weatherDescription = input.weather[0].main,
+            time = input.dt,
+            clouds = input.clouds.all,
+            humidity = input.main.humidity,
         )
     }
 }

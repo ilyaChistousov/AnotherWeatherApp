@@ -24,4 +24,19 @@
         <item name="iconTint">@color/white</item>
         <item name="android:textAppearance">@style/TextAppearance.Custom</item>
     </style>
+
+    <style name="WeatherDetailImageView">
+        <item name="android:layout_height">36dp</item>
+        <item name="android:layout_width">36dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="tint">@color/white</item>
+    </style>
+
+    <style name="Widget.MaterialComponents.Button.WeatherDetailsCustom" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:layout_width">130dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textAppearance">@style/TextAppearance.Custom</item>
+        <item name="iconTint">@color/white</item>
+    </style>
 </resources>

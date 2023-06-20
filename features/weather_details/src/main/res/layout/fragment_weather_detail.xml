@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
+    tools:context=".presentation.WeatherDetailFragment">
+
+    <TextView
+        android:id="@+id/cityName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Санкт-Петербург"
+        android:textSize="24sp"
+        android:textAppearance="@style/TextAppearance.Custom"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintBottom_toTopOf="@id/temp" />
+
+    <TextView
+        android:id="@+id/temp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="70sp"
+        android:textAppearance="@style/TextAppearance.Custom"
+        app:layout_constraintTop_toBottomOf="@id/cityName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/maxTemp"
+        tools:text="25"/>
+
+    <TextView
+        android:id="@+id/maxTemp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textAppearance="@style/TextAppearance.Custom"
+        app:layout_constraintTop_toBottomOf="@id/temp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/minTemp"
+        app:layout_constraintBottom_toTopOf="@id/detailsContainer"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        android:layout_marginEnd="8dp"
+        tools:text="Макс.: 25"/>
+
+    <TextView
+        android:id="@+id/minTemp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textAppearance="@style/TextAppearance.Custom"
+        app:layout_constraintStart_toEndOf="@id/maxTemp"
+        app:layout_constraintTop_toBottomOf="@id/temp"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="Мин: 11"/>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/detailsContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp"
+        android:backgroundTint="@android:color/transparent"
+        app:cardCornerRadius="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/minTemp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/weather"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.Button.WeatherDetailsCustom"
+                tools:text="Погода: 16 м.с"
+                app:icon="@drawable/weather"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/wind"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.Button.WeatherDetailsCustom"
+                app:icon="@drawable/wind_speed"
+                tools:text="Ветер: 16 м.с"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/pressure"
+                android:layout_height="wrap_content"
+                tools:text="Давление: 1231"
+                app:icon="@drawable/pressure"
+                style="@style/Widget.MaterialComponents.Button.WeatherDetailsCustom"
+                app:layout_constraintTop_toBottomOf="@id/weather"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/humidity"
+                android:layout_height="wrap_content"
+                tools:text="Влажность: 123"
+                app:icon="@drawable/humidity"
+                style="@style/Widget.MaterialComponents.Button.WeatherDetailsCustom"
+                app:layout_constraintTop_toBottomOf="@id/wind"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/feelsLike"
+                android:layout_height="wrap_content"
+                app:icon="@drawable/feels_like"
+                tools:text="Feels like: 44"
+                style="@style/Widget.MaterialComponents.Button.WeatherDetailsCustom"
+                app:layout_constraintTop_toBottomOf="@id/humidity"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/clouds"
+                android:layout_height="wrap_content"
+                app:icon="@drawable/cloud"
+                tools:text="Cloudness: 3123"
+                style="@style/Widget.MaterialComponents.Button.WeatherDetailsCustom"
+                app:layout_constraintTop_toBottomOf="@id/pressure"
+                app:layout_constraintStart_toStartOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -22,6 +22,9 @@ class CurrentWeatherFragment : Fragment(R.layout.fragment_current_weather) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentCurrentWeatherBinding.bind(view)
         observeState()
+
+        launchDetails()
+        viewModel.load()
     }
 
     private fun observeState() {
@@ -44,8 +47,8 @@ class CurrentWeatherFragment : Fragment(R.layout.fragment_current_weather) {
         initWeatherImage(currentWeather.description)
     }
 
-    private fun initWeatherImage(description: String) {
-        val imageDrawable = when(description) {
+    private fun initWeatherImage(main: String) {
+        val imageDrawable = when(main) {
             "Clear" -> chistousov.ilya.theme.R.drawable.clear
             "Rain" -> chistousov.ilya.theme.R.drawable.rain
             "Snow" -> chistousov.ilya.theme.R.drawable.snow
@@ -54,6 +57,12 @@ class CurrentWeatherFragment : Fragment(R.layout.fragment_current_weather) {
             else -> chistousov.ilya.theme.R.drawable.clouds
         }
         binding.weatherImage.setImageResource(imageDrawable)
+    }
+
+    private fun launchDetails() {
+        binding.weatherDetails.setOnClickListener {
+            viewModel.launchWeatherDetails()
+        }
     }
 
     override fun onDestroyView() {

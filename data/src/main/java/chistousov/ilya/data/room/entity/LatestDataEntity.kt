@@ -9,9 +9,12 @@ data class LatestDataEntity(
     val city: String,
     val temp: Int,
     val feelsLike: Int,
+    val time: Int,
     val tempMax: Int,
     val tempMin: Int,
     val pressure: Int,
-    val wind: Int,
-    val weatherDescription: String
+    val humidity: Int,
+    val wind: Double,
+    val weatherDescription: String,
+    val clouds: Int
 )

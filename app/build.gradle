@@ -42,10 +42,15 @@ dependencies {
     kapt Libs.Google.HiltCompiler
 
     implementation project(Modules.Data)
+
     implementation project(Modules.Navigation)
+
     implementation project(Modules.Features.Splash)
     implementation project(Modules.Features.CurrentWeather)
+    implementation project(Modules.Features.WeatherDetails)
+
     implementation project(Modules.Core.Common)
     implementation project(Modules.Core.CommonImpl)
+
     implementation project(Modules.Wiring)
 }

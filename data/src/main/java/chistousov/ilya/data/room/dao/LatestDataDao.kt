@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.Flow
 interface LatestDataDao {
 
     @Query("SELECT * FROM latest_data")
-    fun getLatestData(): Flow<LatestDataEntity>
+    fun getLatestData(): LatestDataEntity
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertLatestData(latestDataEntity: LatestDataEntity)

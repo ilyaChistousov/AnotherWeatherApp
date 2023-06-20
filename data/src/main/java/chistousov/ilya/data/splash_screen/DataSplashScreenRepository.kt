@@ -16,7 +16,7 @@ class DataSplashScreenRepository @Inject constructor(
 
     suspend fun loadDefaultLocation() = withContext(Dispatchers.IO) {
         try{
-            val currentWeatherDto = weatherService.getCurrentWeatherByCity("Санкт-Петербург", "ru")
+            val currentWeatherDto = weatherService.getCurrentWeatherByCity("Санкт-Петербург", "en")
             val latestDataEntity = mapper.map(currentWeatherDto)
             latestDataDao.insertLatestData(latestDataEntity)
             return@withContext true

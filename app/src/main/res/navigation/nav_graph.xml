@@ -15,4 +15,9 @@
         android:name="chistousov.ilya.current_weather.presentation.CurrentWeatherFragment"
         android:label="CurrentWeatherFragment"
         tools:layout="@layout/fragment_current_weather"/>
+    <fragment
+        android:id="@+id/weatherDetailsFragment"
+        android:name="chistousov.ilya.weather_details.presentation.WeatherDetailFragment"
+        android:label="WeatherDetailFragment"
+        tools:layout="@layout/fragment_weather_detail"/>
 </navigation>

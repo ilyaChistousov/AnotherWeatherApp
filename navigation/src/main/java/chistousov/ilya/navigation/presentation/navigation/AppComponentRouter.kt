@@ -1,10 +1,13 @@
 package chistousov.ilya.navigation.presentation.navigation
 
+import androidx.core.os.bundleOf
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import chistousov.ilya.common_impl.ActivityRequired
 import chistousov.ilya.navigation.R
+import chistousov.ilya.presentation.BASE_SCREEN_ARGS
+import java.io.Serializable
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -34,8 +37,12 @@ class AppComponentRouter @Inject constructor(
         return navHost.navController
     }
 
-    fun launch(destinationId: Int) {
-        getNavController().navigate(destinationId)
+    fun launch(destinationId: Int, args: Serializable? = null) {
+        if (args == null) {
+            getNavController().navigate(destinationId)
+        } else {
+            getNavController().navigate(destinationId, bundleOf(BASE_SCREEN_ARGS to args))
+        }
     }
 
     fun pop() {

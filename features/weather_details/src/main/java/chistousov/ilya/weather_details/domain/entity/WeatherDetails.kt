@@ -1,7 +1,8 @@
-package chistousov.ilya.weather_details.presentation.domain.entity
+package chistousov.ilya.weather_details.domain.entity
 
 data class WeatherDetails(
     val city: String,
+    val currentTime: String,
     val temp: Int,
     val feelsLike: Int,
     val tempMin: Int,

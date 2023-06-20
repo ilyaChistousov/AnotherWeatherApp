@@ -10,6 +10,7 @@ class CurrentWeatherMapper @Inject constructor(): BaseMapper<LatestDataEntity, C
     override fun map(input: LatestDataEntity): CurrentWeather {
         return CurrentWeather(
             city = input.city,
+            currentTime = input.time,
             temp = input.temp,
             feelsLike = input.feelsLike,
             tempMin = input.tempMin,

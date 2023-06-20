@@ -79,7 +79,6 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/weatherForecast"
-        android:layout_height="wrap_content"
         app:icon="@drawable/calendar"
         android:text="@string/forecast"
         style="@style/Widget.MaterialComponents.Button.Custom"

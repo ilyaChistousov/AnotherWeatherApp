@@ -20,4 +20,9 @@
         android:name="chistousov.ilya.weather_details.presentation.WeatherDetailFragment"
         android:label="WeatherDetailFragment"
         tools:layout="@layout/fragment_weather_detail"/>
+    <fragment
+        android:id="@+id/forecastFragment"
+        android:name="chistousov.ilya.forecast.presentation.ForecastFragment"
+        android:label="ForecastFragment"
+        tools:layout="@layout/fragment_forecast"/>
 </navigation>

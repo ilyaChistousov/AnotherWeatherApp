@@ -3,10 +3,13 @@ package chistousov.ilya.data.mapper
 import chistousov.ilya.common.BaseMapper
 import chistousov.ilya.data.api.dto.CurrentWeatherDto
 import chistousov.ilya.data.room.entity.LatestDataEntity
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 import javax.inject.Inject
 import kotlin.math.roundToInt
 
-class DtoMapper @Inject constructor(): BaseMapper<CurrentWeatherDto, LatestDataEntity> {
+class CurrentWeatherDtoMapper @Inject constructor(): BaseMapper<CurrentWeatherDto, LatestDataEntity> {
 
     override fun map(input: CurrentWeatherDto): LatestDataEntity {
         return LatestDataEntity(
@@ -18,7 +21,7 @@ class DtoMapper @Inject constructor(): BaseMapper<CurrentWeatherDto, LatestDataE
             pressure = input.main.pressure,
             wind = input.wind.speed,
             weatherDescription = input.weather[0].main,
-            time = input.dt,
+            time = input.dt.formatTimeToString("hh:mm"),
             clouds = input.clouds.all,
             humidity = input.main.humidity,
         )

@@ -52,6 +52,7 @@ dependencies {
 
     implementation project(Modules.Core.Common)
     implementation project(Modules.Core.CommonImpl)
+    implementation project(Modules.Core.Presentation)
 
     implementation project(Modules.Wiring)
 }

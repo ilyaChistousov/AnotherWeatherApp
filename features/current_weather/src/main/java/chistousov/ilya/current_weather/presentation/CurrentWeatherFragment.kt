@@ -2,20 +2,34 @@ package chistousov.ilya.current_weather.presentation
 
 import android.os.Bundle
 import android.view.View
+import androidx.activity.OnBackPressedCallback
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import chistousov.ilya.common.Result
 import chistousov.ilya.current_weather.R
 import chistousov.ilya.current_weather.databinding.FragmentCurrentWeatherBinding
 import chistousov.ilya.current_weather.domain.entity.CurrentWeather
+import chistousov.ilya.presentation.BaseScreenArgs
+import chistousov.ilya.presentation.args
+import chistousov.ilya.presentation.viewModelFactory
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class CurrentWeatherFragment : Fragment(R.layout.fragment_current_weather) {
 
     private var _binding: FragmentCurrentWeatherBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: CurrentWeatherViewModel by viewModels()
+
+    class Screen(
+        val isSuccessLoading: Boolean
+    ) : BaseScreenArgs
+
+    @Inject
+    lateinit var factory: CurrentWeatherViewModel.Factory
+    private val viewModel: CurrentWeatherViewModel by viewModelFactory {
+        factory.create(args())
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -24,18 +38,29 @@ class CurrentWeatherFragment : Fragment(R.layout.fragment_current_weather) {
 
         launchDetails()
         launchForecast()
-        viewModel.load()
+        onBackPressed()
     }
 
     private fun observeState() {
         viewModel.currentWeatherState.collect(viewLifecycleOwner) { state ->
             when(state) {
+                is Result.Loading -> {
+                    initFieldsVisibility(binding.loadingBar)
+                }
                 is Result.Success -> {
+                    initFieldsVisibility(binding.contentContainer)
                     initFields(state.value)
-                } else -> {
-
+                }
+                is Result.Error -> {
+                    initFieldsVisibility(binding.errorMessage)
                 }
             }
+        }
+    }
+
+    private fun initFieldsVisibility(visibleView: View) {
+        arrayOf(binding.contentContainer, binding.errorMessage, binding.loadingBar).forEach {
+            it.isVisible = it == visibleView
         }
     }
 
@@ -69,6 +94,16 @@ class CurrentWeatherFragment : Fragment(R.layout.fragment_current_weather) {
         binding.weatherForecast.setOnClickListener {
             viewModel.launchForecast()
         }
+    }
+
+    private fun onBackPressed() {
+        requireActivity()
+            .onBackPressedDispatcher
+            .addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    requireActivity().moveTaskToBack(true)
+                }
+            })
     }
 
     override fun onDestroyView() {

@@ -1,20 +1,18 @@
 package chistousov.ilya.current_weather.presentation
 
 import androidx.lifecycle.viewModelScope
+import chistousov.ilya.common.MissingInternetException
 import chistousov.ilya.common.Result
-import chistousov.ilya.current_weather.domain.GetCurrentWeatherUseCase
 import chistousov.ilya.current_weather.domain.GetDefaultWeatherUseCase
 import chistousov.ilya.current_weather.domain.entity.CurrentWeather
 import chistousov.ilya.presentation.BaseViewModel
-import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.collectLatest
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-@HiltViewModel
-class CurrentWeatherViewModel @Inject constructor(
+class CurrentWeatherViewModel @AssistedInject constructor(
+    @Assisted private val screen: CurrentWeatherFragment.Screen,
     private val getDefaultWeatherUseCase: GetDefaultWeatherUseCase,
     private val currentWeatherRouter: CurrentWeatherRouter
 ) : BaseViewModel() {
@@ -25,8 +23,12 @@ class CurrentWeatherViewModel @Inject constructor(
         load()
     }
 
-    fun load() = viewModelScope.launch {
-        currentWeatherState.value = getDefaultWeatherUseCase()
+    private fun load() = viewModelScope.launch {
+        if (screen.isSuccessLoading) {
+            currentWeatherState.value = getDefaultWeatherUseCase()
+        } else {
+            currentWeatherState.value = Result.Error(MissingInternetException())
+        }
     }
 
     fun launchWeatherDetails() {
@@ -35,5 +37,10 @@ class CurrentWeatherViewModel @Inject constructor(
 
     fun launchForecast() {
         currentWeatherRouter.launchForecast()
+    }
+
+    @AssistedFactory
+    interface Factory {
+        fun create(screen: CurrentWeatherFragment.Screen): CurrentWeatherViewModel
     }
 }

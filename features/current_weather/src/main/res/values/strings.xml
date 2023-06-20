@@ -4,4 +4,5 @@
     <string name="min_temp">Min.: %1$s\u00B0</string>
     <string name="show_details">Show details</string>
     <string name="forecast">Forecast</string>
+    <string name="miss_internet_connection">There is no Internet connection. Check the network is available and if everything is fine then restart the application</string>
 </resources>

@@ -21,7 +21,7 @@ class CurrentWeatherDtoMapper @Inject constructor(): BaseMapper<CurrentWeatherDt
             pressure = input.main.pressure,
             wind = input.wind.speed,
             weatherDescription = input.weather[0].main,
-            time = input.dt.formatTimeToString("hh:mm"),
+            time = input.dt.formatTimeToString(),
             clouds = input.clouds.all,
             humidity = input.main.humidity,
         )

@@ -2,5 +2,5 @@ package chistousov.ilya.splash.presentation
 
 interface SplashScreenRouter {
 
-    fun launchCurrentWeather()
+    fun launchCurrentWeather(isSuccess: Boolean)
 }

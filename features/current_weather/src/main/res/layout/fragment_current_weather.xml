@@ -1,88 +1,113 @@
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".presentation.CurrentWeatherFragment"
-    android:background="@drawable/gradient_background">
+    android:background="@drawable/gradient_background"
+    tools:context=".presentation.CurrentWeatherFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/contentContainer"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible">
+
+        <TextView
+            android:id="@+id/cityName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.Custom"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@id/temp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="Санкт-Петербург" />
+
+        <TextView
+            android:id="@+id/temp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.Custom"
+            android:textSize="70sp"
+            app:layout_constraintBottom_toTopOf="@id/maxTemp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cityName"
+            tools:text="25" />
+
+        <TextView
+            android:id="@+id/maxTemp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:textAppearance="@style/TextAppearance.Custom"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/weatherImage"
+            app:layout_constraintEnd_toStartOf="@id/minTemp"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/temp"
+            tools:text="Макс.: 25" />
+
+        <TextView
+            android:id="@+id/minTemp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.Custom"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/maxTemp"
+            app:layout_constraintTop_toBottomOf="@id/temp"
+            tools:text="Мин: 11" />
+
+        <ImageView
+            android:id="@+id/weatherImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/weatherDetails"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/minTemp"
+            tools:src="@drawable/snow" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/weatherDetails"
+            style="@style/Widget.MaterialComponents.Button.Custom"
+            android:layout_height="wrap_content"
+            android:text="@string/show_details"
+            app:icon="@drawable/details"
+            app:layout_constraintBottom_toTopOf="@id/weatherForecast"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/weatherForecast"
+            style="@style/Widget.MaterialComponents.Button.Custom"
+            android:text="@string/forecast"
+            app:icon="@drawable/calendar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
-        android:id="@+id/cityName"
+        android:id="@+id/errorMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="Санкт-Петербург"
-        android:textSize="24sp"
+        android:textSize="18sp"
+        android:layout_gravity="center"
         android:textAppearance="@style/TextAppearance.Custom"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_chainStyle="packed"
-        app:layout_constraintBottom_toTopOf="@id/temp" />
+        android:text="@string/miss_internet_connection"
+        android:visibility="gone"/>
 
-    <TextView
-        android:id="@+id/temp"
+    <ProgressBar
+        android:id="@+id/loadingBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="70sp"
-        android:textAppearance="@style/TextAppearance.Custom"
-        app:layout_constraintTop_toBottomOf="@id/cityName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/maxTemp"
-        tools:text="25"/>
-
-    <TextView
-        android:id="@+id/maxTemp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:textAppearance="@style/TextAppearance.Custom"
-        app:layout_constraintTop_toBottomOf="@id/temp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/minTemp"
-        app:layout_constraintBottom_toTopOf="@id/weatherImage"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        android:layout_marginEnd="8dp"
-        tools:text="Макс.: 25"/>
-
-    <TextView
-        android:id="@+id/minTemp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:textAppearance="@style/TextAppearance.Custom"
-        app:layout_constraintStart_toEndOf="@id/maxTemp"
-        app:layout_constraintTop_toBottomOf="@id/temp"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:text="Мин: 11"/>
-
-    <ImageView
-        android:id="@+id/weatherImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:src="@drawable/snow"
-        app:layout_constraintTop_toBottomOf="@id/minTemp"
-        app:layout_constraintBottom_toTopOf="@id/weatherDetails"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/weatherDetails"
-        android:layout_height="wrap_content"
-        app:icon="@drawable/details"
-        android:text="@string/show_details"
-        style="@style/Widget.MaterialComponents.Button.Custom"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/weatherForecast"/>
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/weatherForecast"
-        app:icon="@drawable/calendar"
-        android:text="@string/forecast"
-        style="@style/Widget.MaterialComponents.Button.Custom"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_gravity="center"
+        android:visibility="gone"/>
+</FrameLayout>

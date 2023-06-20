@@ -11,7 +11,7 @@ class TimeIntervalListMapper @Inject constructor() : BaseMapper<List<TimeInterva
     override fun map(input: List<TimeIntervalDto>): List<TimeInterval> {
         return input.map {
             TimeInterval(
-                time = it.dt.formatTimeToString("dd.MM, hh:mm"),
+                time = it.dt.formatTimeToString(),
                 temp = it.main.temp.roundToInt()
             )
         }

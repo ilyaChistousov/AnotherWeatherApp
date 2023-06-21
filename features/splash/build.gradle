@@ -30,16 +30,12 @@ android {
     kotlinOptions {
         jvmTarget = '17'
     }
-    buildFeatures {
-        viewBinding true
-    }
 }
 
 dependencies {
     implementation Libs.Android.FragmentKtx
-    implementation Libs.Android.ConstraintLayout
 
-    implementation Libs.Google.Location
+    implementation Libs.Google.Material
     implementation Libs.Google.Hilt
     kapt Libs.Google.HiltCompiler
 

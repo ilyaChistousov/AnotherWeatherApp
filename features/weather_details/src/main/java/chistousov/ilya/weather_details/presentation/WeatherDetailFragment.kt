@@ -5,7 +5,6 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import chistousov.ilya.common.Result
-import chistousov.ilya.presentation.BaseScreenArgs
 import chistousov.ilya.weather_details.R
 import chistousov.ilya.weather_details.databinding.FragmentWeatherDetailBinding
 import chistousov.ilya.weather_details.domain.entity.WeatherDetails

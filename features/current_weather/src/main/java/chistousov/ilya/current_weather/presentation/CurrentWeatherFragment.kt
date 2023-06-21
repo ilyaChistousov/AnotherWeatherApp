@@ -5,15 +5,12 @@ import android.view.View
 import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import chistousov.ilya.common.Result
 import chistousov.ilya.current_weather.R
 import chistousov.ilya.current_weather.databinding.FragmentCurrentWeatherBinding
 import chistousov.ilya.current_weather.domain.entity.CurrentWeather
-import chistousov.ilya.presentation.BaseScreenArgs
-import chistousov.ilya.presentation.args
-import chistousov.ilya.presentation.viewModelFactory
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class CurrentWeatherFragment : Fragment(R.layout.fragment_current_weather) {
@@ -21,15 +18,17 @@ class CurrentWeatherFragment : Fragment(R.layout.fragment_current_weather) {
     private var _binding: FragmentCurrentWeatherBinding? = null
     private val binding get() = _binding!!
 
-    class Screen(
-        val isSuccessLoading: Boolean
-    ) : BaseScreenArgs
+//    class Screen(
+//        val isSuccessLoading: Boolean
+//    ) : BaseScreenArgs
+//
+//    @Inject
+//    lateinit var factory: CurrentWeatherViewModel.Factory
+//    private val viewModel: CurrentWeatherViewModel by viewModelFactory {
+//        factory.create(args())
+//    }
 
-    @Inject
-    lateinit var factory: CurrentWeatherViewModel.Factory
-    private val viewModel: CurrentWeatherViewModel by viewModelFactory {
-        factory.create(args())
-    }
+    private val viewModel: CurrentWeatherViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
